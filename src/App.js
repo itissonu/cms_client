@@ -1,24 +1,24 @@
-import logo from './logo.svg';
 import './App.css';
-
+import LoginPage from './Pages/LoginPage';
+import { Routes, Route } from 'react-router-dom';
+import OtpValidation from './Pages/OtpValidation';
+import ForgotPassword from './Pages/ForgotPassword';
+import NewPassword from './Pages/NewPassword';
+import ProfileOutlet from './utils/ProfileOutlet';
+import ProfilePage from './Pages/ProfilePage';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route exact path="/" element={<LoginPage />} />
+      <Route exact path="/otp" element={<OtpValidation />} />
+      <Route exact path="/forgot" element={<ForgotPassword />} />
+      <Route exact path="/newPassword" element={<NewPassword />} />
+      <Route path='profile' element={<ProfileOutlet />}>
+        <Route exact path="/profile" element={<ProfilePage />} />
+
+      </Route>
+    </Routes>
+
   );
 }
 
