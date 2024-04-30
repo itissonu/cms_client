@@ -6,19 +6,23 @@ import ForgotPassword from './Pages/ForgotPassword';
 import NewPassword from './Pages/NewPassword';
 import ProfileOutlet from './utils/ProfileOutlet';
 import ProfilePage from './Pages/ProfilePage';
+import { Toaster } from "react-hot-toast"
+import ProfileFullDetails from './Pages/ProfileFullDetails';
 function App() {
   return (
-    <Routes>
-      <Route exact path="/" element={<LoginPage />} />
-      <Route exact path="/otp" element={<OtpValidation />} />
-      <Route exact path="/forgot" element={<ForgotPassword />} />
-      <Route exact path="/newPassword" element={<NewPassword />} />
-      <Route path='profile' element={<ProfileOutlet />}>
-        <Route exact path="/profile" element={<ProfilePage />} />
-
-      </Route>
-    </Routes>
-
+    <>
+      <Toaster />
+      <Routes>
+        <Route exact path="/login" element={<LoginPage />} />
+        <Route exact path="/otp/:email" element={<OtpValidation />} />
+        <Route exact path="/forgot" element={<ForgotPassword />} />
+        <Route exact path="/newPassword" element={<NewPassword />} />
+        <Route element={<ProfileOutlet />}>
+          <Route exact path="/" element={<ProfilePage />} />
+          <Route exact path="/details/:id" element={<ProfileFullDetails />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 

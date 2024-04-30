@@ -89,17 +89,18 @@ class ApexChart extends React.Component {
                 stroke: {
                     lineCap: 'round'
                 },
-                labels: ['Perscent'],
+                labels: ['Percent'],
             },
         };
     }
 
     render() {
+        const { totalAttendance, presentAttendance } = this.props;
         return (
             <div>
                 <div id="card">
                     <div id="chart">
-                        <ReactApexChart options={this.state.options} series={this.state.series} type="radialBar" height={250} />
+                        <ReactApexChart options={this.state.options} series={[presentAttendance * 100 / totalAttendance]} type="radialBar" height={250} />
                     </div>
                 </div>
                 <div id="html-dist"></div>
@@ -114,13 +115,14 @@ class ApexChart2 extends React.Component {
         super(props);
 
         this.state = {
-            series: [70, 30],
-            totalCost: 1000 // Assuming total cost is 1000
+            totalCost: 100000 // Assuming total cost is 1000
         };
     }
 
     render() {
-        const { series, totalCost } = this.state;
+        const { totalCost } = this.state;
+        const { dueAmout } = this.props
+        const series2 = [100000 - (dueAmout ? dueAmout : 0), (dueAmout ? dueAmout : 0)]
 
         const options = {
             chart: {
@@ -158,7 +160,7 @@ class ApexChart2 extends React.Component {
         return (
             <div>
                 <div id="chart">
-                    <ReactApexChart options={options} series={series} type="pie" width={340} />
+                    <ReactApexChart options={options} series={series2} type="pie" width={340} />
                 </div>
                 <div id="html-dist"></div>
             </div>
