@@ -8,6 +8,7 @@ import ProfileOutlet from './utils/ProfileOutlet';
 import ProfilePage from './Pages/ProfilePage';
 import { Toaster } from "react-hot-toast"
 import ProfileFullDetails from './Pages/ProfileFullDetails';
+import BlogProfile from './Pages/BlogProfile';
 function App() {
   return (
     <>
@@ -20,6 +21,7 @@ function App() {
         <Route element={<ProfileOutlet />}>
           <Route exact path="/" element={<ProfilePage />} />
           <Route exact path="/details/:id" element={<ProfileFullDetails />} />
+          <Route exact path="/myblogs" element={<BlogProfile/>} />
         </Route>
       </Routes>
     </>

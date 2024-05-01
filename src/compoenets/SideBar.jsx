@@ -29,7 +29,7 @@ const SideBar = () => {
                     <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/syllabus" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaBook size={22} />
                         Syllabus</button>
-                    <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/referrence" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/myblogs" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <CiVideoOn size={22} />
                         My Blogs</button>
                     <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/referrence" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
