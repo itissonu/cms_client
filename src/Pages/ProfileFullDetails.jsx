@@ -127,16 +127,17 @@ const ProfileFullDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='md:w-[63%] w-full h-fit gap-2 flex flex-wrap mt-10 '>            {arr?.map((item, index) => (
-                        <button
-                            key={index}
-                            className={`h-10 px-4 rounded-md font-semibold flex items-center gap-2   border-blue-400  border  ${activeButton === index ? 'bg-cyan-500  text-white' : 'bg-white text-cyan-700 hover:bg-gray-200'}`}
-                            onClick={() => handleButtonClick(index)} // Set the active button on click
-                        >
-                            {item?.icon}
-                            {item?.name}
-                        </button>
-                    ))}
+                    <div className='md:w-[63%] w-full h-fit gap-2 flex flex-wrap mt-10 '>
+                        {arr?.map((item, index) => (
+                            <button
+                                key={index}
+                                className={`h-10 px-4 rounded-md font-semibold flex items-center gap-2   border-blue-400  border  ${activeButton === index ? 'bg-cyan-500  text-white' : 'bg-white text-cyan-700 hover:bg-gray-200'}`}
+                                onClick={() => handleButtonClick(index)} // Set the active button on click
+                            >
+                                {item?.icon}
+                                {item?.name}
+                            </button>
+                        ))}
                     </div>
                 </div>
             </div>
