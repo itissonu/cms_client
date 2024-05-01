@@ -9,6 +9,7 @@ import ProfilePage from './Pages/ProfilePage';
 import { Toaster } from "react-hot-toast"
 import ProfileFullDetails from './Pages/ProfileFullDetails';
 import BlogProfile from './Pages/BlogProfile';
+import AttendenceOverview from './Pages/AttendenceOverview';
 function App() {
   return (
     <>
@@ -22,6 +23,7 @@ function App() {
           <Route exact path="/" element={<ProfilePage />} />
           <Route exact path="/details/:id" element={<ProfileFullDetails />} />
           <Route exact path="/myblogs" element={<BlogProfile/>} />
+          <Route exact path="/overview" element={<AttendenceOverview/>} />
         </Route>
       </Routes>
     </>
