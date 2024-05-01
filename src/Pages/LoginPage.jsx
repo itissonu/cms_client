@@ -6,6 +6,10 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { z } from "zod"
 import { zodResolver } from "@hookform/resolvers/zod"
 import login from "../assets/login.jpg"
+import axios from "axios"
+import { url } from '../utils/BackEndUrl';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 // defining th zod schema 
 const schema = z.object({
     email: z.string().email(),
@@ -18,19 +22,28 @@ const LoginPage = () => {
     const { register, handleSubmit, formState: { errors, isSubmitting }, setError } = useForm({
         resolver: zodResolver(schema)
     })
+    const navigate = useNavigate()
     const [visible, setVisible] = useState(false)
     const handleVisible = (e) => {
         e.preventDefault()
         setVisible(state => !state)
     }
-    const onSubmit = async (data) => {
+    const onSubmit = async (form) => {
         try {
-            await new Promise((resolve) => setTimeout(resolve, 1000))
-            throw new Error()
+            const formData = {
+                email: form?.email,
+                password: form?.password
+            }
+            const { data } = await axios.post(`${url}/api/user/login`, formData)
+            if (data.success) {
+                toast.success(data.message);
+                navigate(`/otp/${form?.email}`)
+            }
 
         } catch (error) {
+
             setError("email", {
-                message: "hello from error"
+                message: error.response.data.message
             })
         }
     }
