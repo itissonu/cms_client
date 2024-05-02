@@ -105,7 +105,8 @@ const ProfilePage = () => {
                         </div>
                     </div>
                     <div className='md:w-[50%] w-full h-full flex flex-col bg-white'>
-                        <div className='w-full md:h-[65%] h-full flex justify-center items-center '>
+                        <div   onClick={() => navigate('/overview')}
+                         className='w-full md:h-[65%] h-full flex justify-center items-center cursor-pointer'>
                             <div className='w-[90%] h-[80%] rounded-md border-b-2 border-l-2 border-r-2 '>
                                 <span className='h-12 font-bold text-md p-4 text-center flex bg-gray-200 '>
                                     Attandacne overview
@@ -117,8 +118,8 @@ const ProfilePage = () => {
                                     <div className='flex md:w-[65%] w-full justify-center items-center h-full py-4  md:h-full'>
                                         <div className='md:h-[70%] h-full  w-full flex md:flex-row md:flex-wrap flex-col '>
                                             {
-                                                Object?.values(userAttandance)?.map((item) => (
-                                                    <div className='md:w-[50%] w-full  flex items-center  gap-4 '>
+                                                Object?.values(userAttandance)?.map((item,ind) => (
+                                                    <div key={ind} className='md:w-[50%] w-full  flex items-center  gap-4 '>
                                                         <span className='md:p-4 p-2 rounded-full  text-white bg-lime-300'><FaBook /> </span>
                                                         <div className='md:font-bold text-xs '>
                                                             <span className='flex gap-2 justify-center items-center'>{(item?.present * 100) / (item?.present + item?.absent) || 0} % <MdPersonOutline size={22} /></span>
