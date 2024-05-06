@@ -1,3 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+h3 {
+    @apply text-xl font-semibold mb-3; /* Apply Tailwind classes using @apply directive */
+  }

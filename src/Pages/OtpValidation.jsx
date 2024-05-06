@@ -10,7 +10,9 @@ const OtpValidation = () => {
     const [OTP, setOTP] = useState("");
     const handleSubmit = async () => {
         try {
-            const { data } = await axios.post(`${url}/api/user/login/otp`, { otp: OTP })
+            const { data } = await axios.post(`${url}/api/user/login/otp`, { otp: OTP },{
+                withCredentials: true,
+              })
             if (data?.success) {
                 toast.success(data.message);
                 localStorage.setItem("auth-token", data.token);

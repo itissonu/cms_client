@@ -96,11 +96,12 @@ class ApexChart extends React.Component {
 
     render() {
         const { totalAttendance, presentAttendance } = this.props;
+        console.log((presentAttendance * 100 / totalAttendance).toFixed(1))
         return (
             <div>
                 <div id="card">
                     <div id="chart">
-                        <ReactApexChart options={this.state.options} series={[presentAttendance * 100 / totalAttendance]} type="radialBar" height={250} />
+                        <ReactApexChart options={this.state.options} series={[(presentAttendance * 100 / totalAttendance).toFixed(1)]} type="radialBar" height={250} />
                     </div>
                 </div>
                 <div id="html-dist"></div>

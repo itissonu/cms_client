@@ -38,6 +38,8 @@ const AttendenceOverview = () => {
         totalClasses: Number(item?.absent || 0) + Number(item?.present || 0),
         absents: item?.absent,
         presents: item?.present,
+        presentDate: item?.presentDate,
+        absentDate: item?.absentDate,
         percentage: item?.present * 100 / (item?.present + item?.absent) || 0
     }));
     return (
