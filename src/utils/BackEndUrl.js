@@ -1,1 +1,1 @@
-export const url = "http://localhost:8005"
+export const url = "https://cms-server-dyus.onrender.com"
