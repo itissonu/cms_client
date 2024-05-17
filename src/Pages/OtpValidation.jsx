@@ -4,7 +4,9 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { url } from '../utils/BackEndUrl';
 import toast from 'react-hot-toast';
+import { useAuth } from '../context/authContext';
 const OtpValidation = () => {
+    const {  login } = useAuth();
     const navigate = useNavigate()
     const { email } = useParams();
     const [OTP, setOTP] = useState("");
@@ -17,6 +19,7 @@ const OtpValidation = () => {
                 toast.success(data.message);
                 localStorage.setItem("auth-token", data.token);
                 localStorage.setItem("user", JSON.stringify(data.user));
+                login();
                 navigate("/")
             }
             console.log('data', data)

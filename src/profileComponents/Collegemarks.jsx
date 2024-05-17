@@ -48,12 +48,12 @@ const Collegemarks = () => {
                 </div>
             ))}
         </div> */}
-        <div className='flex flex-col p-4 gap-3'>
+        <div className='flex flex-col p-4 gap-3 w-full'>
             {marks && Object.keys(marks).map((examType, index) => (
-                <div key={index}>
-                    <h2 onClick={() => handleExamTypeClick(index)} className='w-full bg-gray-100 p-3 text-lg text-gray-950 font-bold border-l-8 border-l-yellow-500'>{examType}</h2>
+                <div key={index} className='w-full'>
+                    <h2 onClick={() => handleExamTypeClick(index)} className='w-full bg-gray-100 p-3 text-lg text-gray-950 font-bold border-l-8 border-l-yellow-500 '>{examType}</h2>
                     {selectedExamIndex === index && (
-                        <table className={`border-[1px] border-gray-400 w-full`}>
+                        <table className='border-[1px] border-gray-400 w-full'>
                             
                                 <tr className='w-full bg-sky-100'>
                                     <th className='text-left p-2'>Subject Name</th>

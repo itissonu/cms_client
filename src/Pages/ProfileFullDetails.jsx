@@ -43,26 +43,26 @@ const ProfileFullDetails = () => {
     }, {
         name: "Address",
         icon: <IoHomeOutline />,
-        component:<Address userDetails={userDetails}/>
+        component: <Address userDetails={userDetails} />
     }, {
         name: "Documents",
         icon: <IoDocumentTextOutline />
     }, {
         name: "Fees",
         icon: <MdCurrencyRupee />,
-        component:<Fees userDetails={userDetails}/>
+        component: <Fees userDetails={userDetails} />
     }, {
         name: "Attandance",
         icon: <HiOutlineAcademicCap />,
-        component:<Attendaces userDetails={userDetails}/>
+        component: <Attendaces userDetails={userDetails} />
     }, {
         name: "College Marks",
         icon: <HiOutlineAcademicCap />,
-        component:<Collegemarks userDetails={userDetails}/>
-    },  {
+        component: <Collegemarks userDetails={userDetails} />
+    }, {
         name: "Id Card",
         icon: <FaRegImage />,
-        component:<Id userDetails={userDetails}/>
+        component: <Id userDetails={userDetails} />
     }]
 
     const handleButtonClick = (index) => {
@@ -83,14 +83,15 @@ const ProfileFullDetails = () => {
         }
         getUserDetails()
     }, [])
+    console.log(userDetails)
     return (
         <div className='bg-gray-200  flex justify-center items-center h-screen'>
             <div className='w-[92%] h-[90%] flex flex-col gap-10 bg-white overflow-y-auto overflow-hidden custom-scrollbar rounded-lg shadow-md'>
 
                 <div className='w-full md:flex-row flex-col flex h-fit gap-3'>
-                    <div className='md:w-[40%] w-full h-full pb-2  flex justify-center items-center '>
+                    <div className='md:w-[40%] w-full h-full pb-2  flex  '>
                         <div className='w-[95%] h-[90%]  '>
-                            <div className='w-full md:h-[40%] h-[50%] flex flex-col md:flex-row items-center'>
+                            <div className='w-full md:h-[20%] h-[50%] flex flex-col md:flex-row items-center'>
                                 <div className='md:w-[40%] w-full h-[70%] md:h-full p-2'>
                                     <img src={userDetails?.profilePic} className='w-32 h-32 rounded-full object-cover' alt="" />
 
@@ -138,20 +139,20 @@ const ProfileFullDetails = () => {
                             </div>
                         </div>
                     </div>
-                    <div className='md:w-[58%] w-full h-fit gap-2 flex flex-col mt-10  p-4 '>
-                        <div className='md:w-[100%] w-full h-fit gap-2 flex flex-wrap  '>
+                    <div className='md:w-[58%] w-full gap-2 flex flex-col mt-10  p-4 h-screen  items-start'>
+                        <div className='md:w-[100%] w-full h-fit gap-2 flex flex-wrap '>
                             {arr?.map((item, index) => (
                                 <button
                                     key={index}
                                     className={`h-10 px-4 rounded-md font-semibold flex items-center gap-2   border-blue-400  border  ${activeButton === index ? 'bg-cyan-500  text-white' : 'bg-white text-cyan-700 hover:bg-gray-200'}`}
-                                    onClick={() => handleButtonClick(index)} // Set the active button on click
+                                    onClick={() => handleButtonClick(index)} 
                                 >
                                     {item?.icon}
                                     {item?.name}
                                 </button>
                             ))}
                         </div>
-                        <div className={`mt-5 transition-all duration-300 transform  translate-x-0 opacity-100  }`}>{arr[activeButton]?.component}</div>
+                        <div className={`mt-5 w-full  `}>{arr[activeButton]?.component}</div>
                     </div>
                 </div>
             </div>

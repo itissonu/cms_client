@@ -51,8 +51,7 @@ const AddBlog = () => {
       );
       const { url } = uploadRes.data;
       photo = url;
-      //<------****** Converting file to URL ussing cloudinary  ******---->
-
+      //<------****** Converting file to URL ussing cloudinary  ******----
 
     }
     const tagsArray = data.tags.split(',');
