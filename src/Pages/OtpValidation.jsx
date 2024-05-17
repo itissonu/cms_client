@@ -4,17 +4,22 @@ import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 import { url } from '../utils/BackEndUrl';
 import toast from 'react-hot-toast';
+import { useAuth } from '../context/authContext';
 const OtpValidation = () => {
+    const {  login } = useAuth();
     const navigate = useNavigate()
     const { email } = useParams();
     const [OTP, setOTP] = useState("");
     const handleSubmit = async () => {
         try {
-            const { data } = await axios.post(`${url}/api/user/login/otp`, { otp: OTP })
+            const { data } = await axios.post(`${url}/api/user/login/otp`, { otp: OTP },{
+                withCredentials: true,
+              })
             if (data?.success) {
                 toast.success(data.message);
                 localStorage.setItem("auth-token", data.token);
                 localStorage.setItem("user", JSON.stringify(data.user));
+                login();
                 navigate("/")
             }
             console.log('data', data)

@@ -1,17 +1,47 @@
 import React from 'react'
 import logo from "../assets/login.jpg"
+import { GrArticle } from "react-icons/gr";
 import { IoMdExit } from "react-icons/io";
 import { IoSchool } from "react-icons/io5";
 import { IoHomeOutline } from "react-icons/io5";
 import { IoChatbubblesOutline } from "react-icons/io5";
+import { FaCalendarAlt } from "react-icons/fa";
 import { FaBook } from "react-icons/fa6";
 import { CiVideoOn, CiBellOn } from "react-icons/ci";
+import { ImBlogger2 } from "react-icons/im";
 import { useLocation, useNavigate } from 'react-router-dom';
+import { TbDeviceComputerCamera } from "react-icons/tb";
+import { url } from '../utils/BackEndUrl';
+import axios from 'axios';
+import { useAuth } from '../context/authContext';
 
 const SideBar = () => {
+    const {  logout } = useAuth();
+
     const location = useLocation();
     const navigate = useNavigate()
     const userDetails = JSON.parse(localStorage.getItem("user"));
+    const handleLogout = async () => {
+        try {
+
+            const response = await axios.post(`${url}/api/user/logout`, {
+                withCredentials: true,
+            });
+            if (response.data.success) {
+
+                localStorage.removeItem('auth-token');
+                localStorage.removeItem('user');
+                logout()
+                navigate('/login');
+            } else {
+
+                console.error('Logout failed:', response.data.message);
+            }
+        } catch (error) {
+
+            console.error('Logout error:', error);
+        }
+    };
     return (
         <div className='w-full flex flex-col justify-between h-screen'>
             <div className='h-[60%] w-full flex flex-col gap-2 pt-4'>
@@ -23,18 +53,27 @@ const SideBar = () => {
                     <button onClick={() => { navigate("/") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out rounded-lg h-10 items-center ${location?.pathname === "/" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <IoHomeOutline size={22} />
                         Home</button>
-                    <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/chat" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/chat") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/chat" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <IoChatbubblesOutline size={22} />
                         Chat</button>
-                    <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/syllabus" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/compiler") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/compiler" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaBook size={22} />
-                        Syllabus</button>
-                    <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/myblogs" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
-                        <CiVideoOn size={22} />
+                        Compiler</button>
+                    <button  onClick={() => { navigate("/myBlogs") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/myblogs" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                        <ImBlogger2 size={22} />
                         My Blogs</button>
-                    <button className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/referrence" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/referances/video") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/video" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <CiVideoOn size={22} />
                         Referrence</button>
+                    <button onClick={() => { navigate("/referances/article") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/article" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                        <GrArticle  size={22} />
+                        Referrence</button>
+                    <button onClick={() => { navigate("/overview") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/overview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                        <TbDeviceComputerCamera  size={22} />
+                        AttendenceOverview</button>
+                    <button onClick={() => { navigate("/mytimetable") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/mytimetable" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                        <FaCalendarAlt  size={22} />
+                        Calendar</button>
 
                 </div>
 
@@ -58,7 +97,7 @@ const SideBar = () => {
                     <span className='mx-4'>Notifications</span>
                 </div>
                 <div className='w-full pl-5 font-semibold'>
-                    <button className='flex items-center w-full   gap-2'> <IoMdExit size={24} />signout</button>
+                    <button className='flex items-center w-full   gap-2' onClick={handleLogout}> <IoMdExit size={24} />signout</button>
 
                 </div>
             </div>
