@@ -34,90 +34,90 @@ import FeesDetails from './teacher pages/FeesDetails';
 import { useAuth } from './context/authContext';
 import Example from './Pages/Example';
 import Chat from './Pages/Chat';
+import PrivateRoute from './utils/PrivateRoute';
 
 function App() {
-  const { isLogged } = useAuth();
+  const { isLogged, role } = useAuth();
 
-  const [role, setUserRole] = useState(null)
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const authStatus = isLoggedIn();
-      if (!authStatus) {
-        <Navigate to="/login" />;
-      }
+    const token = localStorage.getItem('auth-token');
+    const user = localStorage.getItem('user');
 
-      if (authStatus) {
-        try {
-          const role = await getUserRole();
-          setUserRole(role);
-          console.log('User role:', role);
-        } catch (error) {
-          console.error('Error fetching user role:', error);
-        }
-      }
-    };
-
-    fetchData(); // Fetch user data asynchronously
+    if (token && user) {
+      setLoading(false);
+    } else {
+      setLoading(false);
+    }
   }, [isLogged]);
 
+  if (loading) {
+    return <>Loading....</>;
+  }
 
+  const redirectToRoleBasedHome = () => {
+    if (role === 'student') return <Navigate to="/student" />;
+    if (role === 'teacher') return <Navigate to="/teacher" />;
+    if (role === 'admin') return <Navigate to="/admin" />;
+  };
 
   return (
     <>
       <Toaster />
       <Routes>
-        <Route exact path="/login" element={<LoginPage />} />
-        <Route exact path="/otp/:email" element={<OtpValidation />} />
-        <Route exact path="/forgot" element={<ForgotPassword />} />
-        <Route exact path="/newPassword" element={<NewPassword />} />
-        {role === null ? <>Loading....</> : role === 'student' && (
-          <Route element={<ProfileOutlet />}>
-            <Route exact path="/" element={<ProfilePage />} />
-            <Route exact path="/chat" element={<Chat />} />
-            <Route exact path="/details/:id" element={<ProfileFullDetails />} />
-            <Route exact path="/myblogs" element={<BlogProfile />} />
-            <Route exact path="/mytimetable" element={<TimeTable />} />
-            <Route exact path="/myblogs/addblog" element={<AddBlog />} />
-            <Route exact path="/myblogs/:id" element={<SingleBlog />} />
-            <Route exact path="/myblogs/update/:id" element={<UpdateBlog />} />
-            <Route exact path="/overview" element={<AttendenceOverview />} />
-            <Route exact path="/referances/article" element={<References />} />
-            <Route exact path="/referances/video" element={<ReferenceVideo />} />
-            <Route exact path="/compiler" element={<Example />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/otp/:email" element={<OtpValidation />} />
+        <Route path="/forgot" element={<ForgotPassword />} />
+        <Route path="/newPassword" element={<NewPassword />} />
 
-          </Route>
+        <Route path="/" element={isLogged ? redirectToRoleBasedHome() : <Navigate to="/login" />} />
 
-        )}
-        {role === null ? <>Loading....</> : role === 'teacher' && (
-          <Route element={<TeacherLayout />}>
-            <Route exact path="/" element={<TeacherProfile />} />
-           
-            <Route exact path="/studentregistration" element={<StudentRegistration />} />
-            <Route exact path="/addmark" element={<ExamMark />} />
-            <Route exact path="/markoverview" element={<ExamMarkOverView />} />
-            <Route exact path="/attendance" element={<TakeAttendance />} />
-            <Route exact path="/attendance/overview" element={<AttendanceOverView />} />
-            <Route exact path="/timetable" element={<AddTimeTable />} />
-            <Route exact path="/referances" element={<Referances />} />
-            <Route exact path="/subjectandall" element={<SubjectAndAll />} />
-            <Route exact path="/myblogs/:id" element={<SingleBlog />} />
-            <Route exact path="/fees" element={<FeesDetails />} />
+        <Route path="/student" element={
+          <PrivateRoute allowedRoles={['student']}>
+            <ProfileOutlet />
+          </PrivateRoute>
+        }>
+          <Route index element={<ProfilePage />} />
+          <Route path="/student/chat" element={<Chat />} />
+          <Route path="/student/details/:id" element={<ProfileFullDetails />} />
+          <Route path="/student/myblogs" element={<BlogProfile />} />
+          <Route path="/student/mytimetable" element={<TimeTable />} />
+          <Route path="/student/myblogs/addblog" element={<AddBlog />} />
+          <Route path="/student/myblogs/:id" element={<SingleBlog />} />
+          <Route path="/student/myblogs/update/:id" element={<UpdateBlog />} />
+          <Route path="/student/overview" element={<AttendenceOverview />} />
+          <Route path="/student/referances/article" element={<References />} />
+          <Route path="/student/referances/video" element={<ReferenceVideo />} />
+          <Route path="/student/compiler" element={<Example />} />
+        </Route>
 
-            <Route exact path="/compiler" element={<Example />} />
+        <Route path="/teacher" element={
+          <PrivateRoute allowedRoles={['teacher']}>
+            <TeacherLayout />
+          </PrivateRoute>
+        }>
+          <Route index element={<TeacherProfile />} />
+          <Route path="/teacher/studentregistration" element={<StudentRegistration />} />
+          <Route path="/teacher/addmark" element={<ExamMark />} />
+          <Route path="/teacher/markoverview" element={<ExamMarkOverView />} />
+          <Route path="/teacher/attendance" element={<TakeAttendance />} />
+          <Route path="/teacher/attendance/overview" element={<AttendanceOverView />} />
+          <Route path="/teacher/timetable" element={<AddTimeTable />} />
+          <Route path="/teacher/referances" element={<Referances />} />
+          <Route path="/teacher/subjectandall" element={<SubjectAndAll />} />
+          <Route path="/teacher/myblogs/:id" element={<SingleBlog />} />
+          <Route path="/teacher/fees" element={<FeesDetails />} />
+          <Route path="/teacher/compiler" element={<Example />} />
+        </Route>
 
-          </Route>
-
-        )}
-        {role === null ? <>Loading....</> : role === 'admin' && (
-          <Route element={<AdminLayout />}>
-
-
-          </Route>
-
-        )}
-
-
+        <Route path="/admin" element={
+          <PrivateRoute allowedRoles={['admin']}>
+            <AdminLayout />
+          </PrivateRoute>
+        }>
+          {/* Add Admin routes here */}
+        </Route>
       </Routes>
     </>
   );

@@ -51,36 +51,36 @@ const TeacherSidebar = () => {
                     <span className='text-lg font-bold '> Student CMS</span>
                 </div>
                 <div className='w-full flex flex-col justify-center  font-semibold items-center gap-2 '>
-                    <button onClick={() => { navigate("/") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out rounded-lg h-10 items-center ${location?.pathname === "/" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out rounded-lg h-10 items-center ${location?.pathname === "/" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <IoHomeOutline size={22} />
                         Home</button>
-                    <button onClick={() => { navigate("/studentregistration") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/studentregistration" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/studentregistration") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/studentregistration" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <PiStudentFill size={22} />
                         Registration</button>
-                    <button onClick={() => { navigate("/attendance") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/attendance" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/attendance") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/attendance" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaCalendarAlt size={22} />
                         Attendance</button>
-                    <button onClick={() => { navigate("/addmark") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/addmark" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/addmark") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/addmark" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <GiNotebook size={22} />
                         Exam Mark</button>
-                    <button onClick={() => { navigate("/markoverview") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/markoverview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/markoverview") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/markoverview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaBookReader size={22} />
                         Mark Overview</button>
-                    <button onClick={() => { navigate("/attendance/overview") }} className={`flex w-[92%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/attendance/overview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/attendance/overview") }} className={`flex w-[92%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/attendance/overview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <IoCalendarNumberOutline size={22} />
                         Attendance Overview</button>
 
-                    <button onClick={() => { navigate("/referances") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/referances" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/referances") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/referances" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <LuStickyNote size={22} />
                         Referance </button>
-                        <button onClick={() => { navigate("/compiler") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/compiler" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                        <button onClick={() => { navigate("/teacher/compiler") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/compiler" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaBookReader size={22} />
                        Code Compiler</button>
 
-                    <button onClick={() => { navigate("/subjectandall") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/subjectandall" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/teacher/subjectandall") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/subjectandall" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <CgWebsite size={22} />
                         Subject and etc </button>
-                        <button onClick={() => { navigate("/fees") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/fees" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                        <button onClick={() => { navigate("/teacher/fees") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/fees" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <CgWebsite size={22} />
                         Fees </button>
 

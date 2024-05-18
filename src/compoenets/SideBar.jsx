@@ -50,28 +50,28 @@ const SideBar = () => {
                     <span className='text-lg font-bold '> Student CMS</span>
                 </div>
                 <div className='w-full flex flex-col justify-center  font-semibold items-center gap-2 '>
-                    <button onClick={() => { navigate("/") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out rounded-lg h-10 items-center ${location?.pathname === "/" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out rounded-lg h-10 items-center ${location?.pathname === "/student" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <IoHomeOutline size={22} />
                         Home</button>
-                    <button onClick={() => { navigate("/chat") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/chat" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student/chat") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/chat" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <IoChatbubblesOutline size={22} />
                         Chat</button>
-                    <button onClick={() => { navigate("/compiler") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/compiler" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student/compiler") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/compiler" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaBook size={22} />
                         Compiler</button>
-                    <button  onClick={() => { navigate("/myBlogs") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/myblogs" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button  onClick={() => { navigate("/student/myBlogs") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/myblogs" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <ImBlogger2 size={22} />
                         My Blogs</button>
-                    <button onClick={() => { navigate("/referances/video") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/video" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student/referances/video") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/video" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <CiVideoOn size={22} />
                         Referrence</button>
-                    <button onClick={() => { navigate("/referances/article") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/article" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student/referances/article") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/article" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <GrArticle  size={22} />
                         Referrence</button>
-                    <button onClick={() => { navigate("/overview") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/overview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student/overview") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/overview" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <TbDeviceComputerCamera  size={22} />
                         AttendenceOverview</button>
-                    <button onClick={() => { navigate("/mytimetable") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/mytimetable" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
+                    <button onClick={() => { navigate("/student/mytimetable") }} className={`flex w-[90%] gap-4 px-4 hover:bg-white hover:font-bold hover:shadow-md hover:scale-100 duration-300 ease-in-out   rounded-lg h-10 items-center ${location?.pathname === "/mytimetable" ? "bg-white font-bold shadow-md scale-100 duration-300 ease-in-out " : ""}`}>
                         <FaCalendarAlt  size={22} />
                         Calendar</button>
 
